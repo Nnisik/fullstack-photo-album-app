@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #000;
+    color: #eee;
+    font-size: 1em;
+    font-family: "Poppins", sans-serif;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 5% 0;
+}
+
+.logo {
+    font-size: 2em;
+}
+
+.nav_links {
+}
+
+.nav_links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    height: 1.2em;
+}
+
+.link {
+    color: #666;
+    transition-duration: 0.3s;
+}
+
+.link:hover {
+    color: #eee;
+    font-size: 1.2em;
+}
+
+main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.profile {
+    padding: 1em 1em;
+    height: 5em;
+    border-bottom: #aaa solid 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+
+.profile-img {
+    height: 4.5em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: fuchsia;
+}
+
+.profile-info {
+    margin: 0 1em;
+}
+
+.options {
+    height: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin: 0.5em;
+}
+
+.add-btn {
+    height: 24px;
+    aspect-ratio: 20/9;
+    background: #000;
+    border: 1px solid #eee;
+    color: #eee;
+    transition-duration: 0.3s;
+}
+
+.add-btn:hover {
+    border: 2px solid #eee;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.post {
+    aspect-ratio: 3/4;
+    background: mediumvioletred;
+    border-radius: 10px;
+}
