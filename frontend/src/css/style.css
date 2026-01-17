@@ -57,16 +57,36 @@ main {
 .main-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem 1.25rem;
+    margin-top: 1em;
 }
 
-.post-extended {
+.post-extended > .post-description {
+    display: flex;
+    align-items: center;
+    margin: 1em auto;
+}
+
+.post-info {
+    display: flex;
+    align-items: center;
+
+    & > h3 {
+        margin-left: 1rem;
+    }
+}
+
+.post_creator-profile {
+    background: cornflowerblue;
+    height: 3em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
 }
 
 .search-results {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem 1rem;
 }
 
 .profile {
