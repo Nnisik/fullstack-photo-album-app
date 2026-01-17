@@ -87,6 +87,10 @@ main {
     border-radius: 50%;
 }
 
+#search {
+    display: none;
+}
+
 .search-field {
     display: flex;
     justify-content: center;
