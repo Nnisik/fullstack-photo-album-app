@@ -26,11 +26,11 @@ popUpCloseBtn.addEventListener("click", () => {
 // FIXME: currently does nothing
 goToSignUpBtn.onclick = () => {
     loginForm.style.display = "none";
-    signUpForm.style.display = "flex";
+    signUpForm.style.display = "block";
 }
 
 // FIXME: currently does nothing
 goToLoginBtn.onclick = () => {
     signUpForm.style.display = "none";
-    loginForm.style.display = "flex";
+    loginForm.style.display = "block";
 }
