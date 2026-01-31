@@ -12,16 +12,18 @@
     <nav>
         <h2 class="logo">Cat Pics</h2>
         <section class="nav_links">
+            <!--
             <ul class="nav_links-list">
-                <li class="link">Main</li>
-                <li class="link">Search</li>
-                <li class="link">Profile</li>
+                <li class="link" id="lnk-page-main">Main</li>
+                <li class="link" id="lnk-page-search">Search</li>
+                <li class="link" id="lnk-page-profile">Profile</li>
                 <li class="link">Theme</li>
-            </ul>
+            </ul>-->
         </section>
     </nav>
     <main>
 
+        <!--
         <div id="main">
             <section class="main-gallery">
                 <div class="post post-extended">
@@ -58,28 +60,104 @@
 
             </section>
         </div>
+        -->
 
         <div id="profile">
-            <section class="profile">
-                <div class="profile-img"></div> <!-- Todo: Profile image holder-->
+            <div class="profile_no-log-in">
+                <form class="sign-in-form" id="login-form">
+                    <h2 class="sign-in-form_header">Log In to see more</h2>
+                    <label class="sign-in-form_label">
+                        Username
+                        <input class="sign-in-form_input" type="text" name="username" />
+                    </label>
+                    <label class="sign-in-form_label">
+                        Password
+                        <input class="sign-in-form_input" type="password" name="password" />
+                    </label>
+                    <button class="sign-in-form_btn">Log In</button>
+                    <button id="open-sign-up-btn">Create account</button>
+                </form>
+                <form class="sign-in-form" id="sign-up-form">
+                    <h2 class="sign-in-form_header">What about joining <br>the community</h2>
+                    <label class="sign-in-form_label">
+                        Username
+                        <input class="sign-in-form_input" type="text" />
+                    </label>
+                    <label class="sign-in-form_label">
+                        Email
+                        <input class="sign-in-form_input" type="text" />
+                    </label>
+                    <label class="sign-in-form_label">
+                        Password
+                        <input class="sign-in-form_input" type="password" />
+                    </label>
+                    <button class="sign-in-form_btn">Sign Up</button>
+                    <button id="open-login-btn">Sign in</button>
+                </form>
+            </div>
+            <!--
+            <div class="profile_log-in">
+                <section class="profile">
+                <div class="profile-img"></div> --> <!-- Todo: Profile image holder--><!--
                 <div class="profile-info">
                     <h3>Nickname</h3>
                     <p>small description</p>
                 </div>
-            </section>
-            <section class="options">
-                <button class="add-btn">+</button>
-            </section>
-            <section class="gallery"> <!-- Todo: grid gallery -->
-                <div class="post">
-                    <div class="post-img"></div>
-                    <div class="post-description">
-                        <h3>Post 1</h3>
-                        <input type="checkbox">
+                </section>
+                    <section class="options">
+                    <button class="add-btn" id="profile_add-new-btn">+</button>
+                </section>
+                    <section class="gallery"> --><!-- Todo: grid gallery --><!--
+                    <div class="post">
+                        <div class="post-img"></div>
+                        <div class="post-description">
+                            <h3>Post</h3>
+                            <input type="checkbox">
+                        </div>
                     </div>
+                    <div class="post">
+                        <div class="post-img"></div>
+                        <div class="post-description">
+                            <h3>Post</h3>
+                            <input type="checkbox">
+                       </div>
+                    </div>
+                    <div class="post">
+                        <div class="post-img"></div>
+                        <div class="post-description">
+                            <h3>Post</h3>
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="post-img"></div>
+                        <div class="post-description">
+                            <h3>Post</h3>
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                </section>
                 </div>
-            </section>
+            </div> -->
         </div>
     </main>
+
+    <div class="pop-up" id="pop-up_add-new-post">
+        <div class="pop-up_container">
+            <div class="pop-up_menu">
+                <button id="pop-up_close-modal-btn">x</button>
+            </div>
+            <form class="pop-up_form">
+                <input type="text" name="name" id="add-new_name-input" placeholder="*** add text here ***" class="form-input" required />
+                <input type="text" name="img-link" id="add-new_img-input" placeholder="*** add text here ***" class="form-input" required />
+            </form>
+            <div class="pop-up_bottom-menu">
+                <button type="submit" id="create-new_btn">create new</button>
+            </div>
+        </div>
+    </div>
+
+<script src="src/js/index.js"></script>
+
 </body>
 </html>
