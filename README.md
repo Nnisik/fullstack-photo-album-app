@@ -2,9 +2,10 @@
 
 ## Future Plans
 * Backend
-  * connect database 
+  * connect database
+  * test APIs
 * Frontend
-  * actually do it
+  * fix JS errors
 
 ## Known Issues
-there are currently nothing to try to search for them
+* login/sign up switch buttons currently doesn't work, by reloading the whole page 
