@@ -1,5 +1,17 @@
+function getPosts() {
+    fetch("http://127.0.0.1:8080/api/gallery")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => console.log(error))
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    signUpForm.style.display = "none";
+    // signUpForm.style.display = "none";
+
+    // TODO: get posts from DB throught REST API
+    getPosts();
 })
 
 const addNewPostBtn = document.getElementById("profile_add-new-btn");

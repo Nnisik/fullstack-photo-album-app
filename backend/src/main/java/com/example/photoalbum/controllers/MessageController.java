@@ -1,6 +1,5 @@
 package com.example.photoalbum.controllers;
 
-import com.example.photoalbum.entities.Message;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController {
 
     @RequestMapping("/hello")
-    public Message sayHello() {
-        return new Message("Hello, World!");
+    public void sayHello() {
+        System.out.println("hello world");
     }
 }
