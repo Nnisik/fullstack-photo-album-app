@@ -3,9 +3,9 @@ package com.example.photoalbum.service;
 import com.example.photoalbum.entities.User;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.List;
+import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -43,14 +43,15 @@ public class UserService {
                 idCounter.incrementAndGet(),
                 userToCreate.getUserUsername(),
                 userToCreate.getUserLogin(),
-                userToCreate.getUserPassword()
+                userToCreate.getUserPassword(),
+                userToCreate.getUserCreatedDate()
         );
 
         userMap.put(newUser.getUserID(), newUser);
         return newUser;
     }
 
-    public User updateUser(Long id, User userToUpdate) {
+    public static User updateUser(Long id, User userToUpdate) {
         if (!userMap.containsKey(id)) {
             throw new NoSuchElementException("such user doesn't exist");
         }
@@ -59,7 +60,8 @@ public class UserService {
                 id,
                 userToUpdate.getUserUsername(),
                 userToUpdate.getUserLogin(),
-                userToUpdate.getUserPassword()
+                userToUpdate.getUserPassword(),
+                userToUpdate.getUserCreatedDate()
         );
         userMap.put(id, updatedUser);
         return updatedUser;

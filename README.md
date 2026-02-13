@@ -2,7 +2,7 @@
 
 ## Future Plans
 * Backend
-  * finish writing requests managing for diff
+  * finish writing requests managing for diff APIs
     * gallety API
     * posts API
   * fully connect to a database

@@ -2,9 +2,9 @@ package com.example.photoalbum.controllers;
 
 import com.example.photoalbum.entities.User;
 import com.example.photoalbum.service.UserService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +24,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    // TODO: add error handler
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         log.info("Called getAllUsers");
@@ -32,28 +31,33 @@ public class UserController {
                 .body(UserService.getAllUsers());
     }
 
-    // TODO: add error handler
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") long userId) {
-        log.info("Called getUserByID with id = " + userId);
-        return ResponseEntity.status(200)
-                .body(UserService.getUserById(userId));
+        log.info("Called getUserByID with id = {}", userId);
+
+        try {
+            return ResponseEntity.status(200)
+                    .body(UserService.getUserById(userId));
+        }
+        catch (NoSuchElementException e) {
+            return ResponseEntity.status(404)
+                    .build();
+        }
     }
 
-    // TODO: add error handler
     @PostMapping
     // ResponseEntity<T> allows to set up how the API call will look like
     public ResponseEntity<User> createUser(@RequestBody User userToCreate) { // @RequestBody converts object <-> json
         log.info("Called createUser");
-        // return for responce entity
-        return ResponseEntity.status(201)
-                .header("test-header", "123")
-                .body(userService.createUser(userToCreate));
-        /*
-        This return is for when there is no response entity
-        return userService.createUser(userToCreate); // sending request to service-specific class to do it
-         */
-
+        try {
+            // return for response entity
+            return ResponseEntity.status(201)
+                    .body(userService.createUser(userToCreate));
+        }
+        catch (IllegalArgumentException e) {
+            return ResponseEntity.status(404)
+                    .build();
+        }
     }
 
     // FIXME: rework userToUpdate varuables OR separate methods
@@ -73,7 +77,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
-        log.info("Called deleteUser");
+        log.info("Called deleteUser with id", id);
         try {
             userService.deleteUser(id);
             return ResponseEntity.ok()

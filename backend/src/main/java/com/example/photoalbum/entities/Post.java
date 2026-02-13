@@ -1,44 +1,49 @@
 package com.example.photoalbum.entities;
 
+import java.time.LocalDateTime;
+
 public class Post {
-    private final int id;
-    private String name;
-    private boolean liked = false;
-    private String imgLink;
+    private long id;
+    private String text;
+    private String imgLink = "";
+    private LocalDateTime uploadDate = LocalDateTime.now();
+    private User creatorId;
 
-
-    public Post(int id, String name) {
+    public Post(long id, String text, String imgLink, User creatorId) {
         this.id = id;
-        this.name = name;
+        this.text = text;
+        this.imgLink = imgLink;
+        this.creatorId = creatorId;
     }
 
-    public Post(int id, String name, String imgLink) {
+    public Post(long id, String text, String imgLink) {
         this.id = id;
-        this.name = name;
+        this.text = text;
         this.imgLink = imgLink;
     }
 
-    public int getPostId() {
+    public Post(String text, String imgLink) {
+        this.text = this.text;
+        this.imgLink = imgLink;
+    }
+
+    public long getPostId() {
         return this.id;
     }
 
-    private void setPostName(String name) {
-        this.name = name;
-    }
-
     public String getPostName() {
-        return this.name;
+        return this.text;
     }
 
-    public void likePost() {
-        this.liked = true;
+    private void setPostName(String name) {
+        this.text = name;
     }
 
-    public void dislikePost() {
-        this.liked = false;
+    public String getPostImgLink() {
+        return this.imgLink;
     }
 
-    public void setImgLink(String imgLink) {
+    public void setPostImgLink(String imgLink) {
         this.imgLink = imgLink;
     }
 
