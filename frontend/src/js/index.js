@@ -1,19 +1,30 @@
-function getPosts() {
-    fetch("http://127.0.0.1:8080/api/gallery")
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => console.log(error))
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-    // signUpForm.style.display = "none";
 
-    // TODO: get posts from DB throught REST API
-    getPosts();
-})
+    // Noticing currently active page
+    switch(getCurrentPage()) {
 
+        // Profile page gallery
+        case "profile":
+            // TODO: getting current user ID from JWT
+            // TODO: JWT
+            let currentUserID;
+
+            try {
+                // FIXME
+                // TODO: connect function from diff files
+                const allUserPosts = getAllUserPosts(currentUserID);
+            }
+            catch (e) {
+                console.log(e);
+            }
+            break;
+
+        default:
+            console.log("no such page exist");
+    }
+});
+
+// profile page pointers
 const addNewPostBtn = document.getElementById("profile_add-new-btn");
 
 // pop-up window pointers
@@ -26,6 +37,7 @@ const signUpForm = document.getElementById("sign-up-form");
 const goToSignUpBtn = document.getElementById("open-sign-up-btn");
 const goToLoginBtn = document.getElementById("open-login-btn");
 
+// add new post modal window managing
 addNewPostBtn.addEventListener("click", () => {
     popUpWindow.style.display = "flex";
 });

@@ -20,11 +20,11 @@
                     <h2 class="sign-in-form_header">Log In to see more</h2>
                     <label class="sign-in-form_label">
                         Username
-                        <input class="sign-in-form_input" type="text" name="username" />
+                        <input id="sign-in-form_username" class="sign-in-form_input" type="text" name="username" />
                     </label>
                     <label class="sign-in-form_label">
                         Password
-                        <input class="sign-in-form_input" type="password" name="password" />
+                        <input id="sign-in-form_password" class="sign-in-form_input" type="password" name="password" />
                     </label>
                     <button class="sign-in-form_btn">Log In</button>
                     <button id="open-sign-up-btn">Create account</button>
@@ -33,15 +33,15 @@
                     <h2 class="sign-in-form_header">What about joining <br>the community</h2>
                     <label class="sign-in-form_label">
                         Username
-                        <input class="sign-in-form_input" type="text" />
+                        <input id="sign-up-form_username" class="sign-in-form_input" type="text" />
                     </label>
                     <label class="sign-in-form_label">
                         Email
-                        <input class="sign-in-form_input" type="text" />
+                        <input id="sign-up-form_email" class="sign-in-form_input" type="text" />
                     </label>
                     <label class="sign-in-form_label">
                         Password
-                        <input class="sign-in-form_input" type="password" />
+                        <input id="sign-up-form_password" class="sign-in-form_input" type="password" />
                     </label>
                     <button class="sign-in-form_btn">Sign Up</button>
                     <button id="open-login-btn">Sign in</button>
@@ -107,12 +107,13 @@
                 <input type="text" name="img-link" id="add-new_img-input" placeholder="*** add text here ***" class="form-input" required />
             </form>
             <div class="pop-up_bottom-menu">
-                <button type="submit" id="create-new_btn">create new</button>
+                <button id="create-new_btn">create new</button>
             </div>
         </div>
     </div>
 
-<script src="src/js/index.js"></script>
+    <script src="src/js/index.js"></script>
+    <script src="src/js/post.js"></script>
 
 </body>
 </html>
