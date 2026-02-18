@@ -44,6 +44,7 @@
 ## Future Plans
 ### Backend
 * TESTS
+* posts liking logic
 ### Frontend
 * do like buttons heart shape
 * add delete option on posts
@@ -53,3 +54,4 @@
 ## Known Issues
 * login/sign up switch buttons currently doesn't work, by reloading the whole page
 * README files links in "Table of Content" doesn't work
+* empty list message doesn't apppear on page
