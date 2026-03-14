@@ -1,11 +1,156 @@
-function createPostElement(postInfo, galleryPointer) {
+function checkNewUserFieldsNotEmpty(userParams) {
+    // check if username field is not empty
+    if (userParams.user_username === "") {
+        // TODO: add message
+        return false;
+    }
+
+    // check if email field is not empty
+    if (userParams.user_email === "") {
+        // TODO: add message
+        return false;
+    }
+
+    // check if password field is not empty
+    if (userParams.user_password === "") {
+        // TODO: add message
+        return false;
+    }
+
+    return true;
+}
+
+// API request funcition
+// GET curtain user by his ID
+// TODO: JWT
+function getUser(userId) {
+    fetch("https://localhost:8080/api_v1/user/" + userId)
+        .then((response) => response.json())
+        .then((data) => {
+            // TODO: add data manipulation
+            console.log(data);
+        })
+        .catch((e) => {
+            console.log(e);
+        })
+}
+
+// TODO: create new user
+function createNewUser() {
+    // get new user data from sign up form fields
+    const newUserParams = {
+        user_username: document.getElementById("sign-up-form_username").value ,
+        user_email: document.getElementById("sign-up-form_email").value ,
+        user_password: document.getElementById("sign-up-form_password").value
+    };
+
+    if (checkNewUserFieldsNotEmpty(newUserParams)) {
+        const options = {
+            method: "POST",
+            body: JSON.stringify(newUserParams)
+        };
+
+        // TODO: add form fields managing
+        fetch("https://localhost:8080/api_v1/user", options)
+            .then((response) => response.json())
+            .then((json) => {
+                // TODO: add returned data manipulation
+                console.log(json)
+            });
+    }
+}
+
+
+function checkNewPostFieldNotEmpty(postParams) {
+    // check if description field is not empty
+    if (postParams.post_text === "") {
+        console.log("New post should have description")
+        return false;
+    }
+
+    // check if image link field is not empty
+    if (postParams.post_img === "") {
+        console.log("New post should have an image")
+        return false;
+    }
+
+    return true;
+}
+
+// API request function
+// GET all posts request
+function getAllPosts() {
+    fetch("https://localhost:8080/api_v1/post")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            // TODO: create a feed page to see recent posts from diff users
+            return data;
+        })
+}
+
+// GET all user's posts request
+function getAllUserPosts(userId) {
+    fetch("https://localhost:8080/api_v1/post/" + userId)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            if (length(data) == 0) {
+                showNoPostsMessage()
+            } else {
+                data.forEach((post) => {
+                    createPostElement(post)
+                })
+            }
+        })
+        .catch((e) => {
+            console.log(e);
+        })
+}
+
+// POST new post request
+function createNewPost(userId) {
+    // get post data from form fields
+    // TODO: add getting current user Id from JWT file
+    const newPostParams = {
+        post_text: document.getElementById("add-new_name-input").value,
+        post_img: document.getElementById("add-new_img-input").value,
+        post_creator_id: userId
+    };
+
+    if (checkNewPostFieldNotEmpty(newPostParams)) {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(newPostParams)
+        };
+        createNewPostRequest(options)
+    }
+}
+
+// TODO: create POST API-request
+function createNewPostRequest(JSONRequestOptions) {
+    fetch("https://localhost:8080/api_v1/post", JSONRequestOptions)
+        .then((response) => response.json())
+        .then((json) => {
+            // TODO: add returned data manipulation
+            console.log(json)
+        });
+}
+
+function showNoPostsMessage() {
+    let emptyMessageElement = document.createElement("p");
+    emptyMessageElement.innerText = "Ops, seems like you haven't posted anything yet...";
+    galleryContainer.appendChild(emptyMessageElement);
+}
+
+function createPostElement(postInfo) {
     const newPostDiv = document.createElement("div");
     newPostDiv.classList.add("post");
 
     const newPostImg = document.createElement("img");
     newPostImg.classList.add("post-img");
-    // TODO: add href attribute
-    // TODO: add alt attribute
+    newPostImg.setAttribute("href", postInfo.img)
+    newPostImg.setAttribute("alt", "")
     newPostDiv.appendChild(newPostImg);
 
     const newPostDescripDiv = document.createElement("div");
@@ -16,39 +161,33 @@ function createPostElement(postInfo, galleryPointer) {
     newPostHeader.innerText = postInfo.text;
     newPostDescripDiv.appendChild(newPostHeader)
 
-    const likeBtnDiv = document.createElement("div");
-    likeBtnDiv.classList.add("post_like-btn");
+    // TODO: LIKE BUTTON
+    // const likeBtnDiv = document.createElement("div");
+    // likeBtnDiv.classList.add("post_like-btn");
     // TODO: add pointers for a specific post
-
-    const likeBtn = document.createElement("input");
-    likeBtn.classList.add("like-btn");
-    likeBtn.type = "checkbox";
-    likeBtn.name = "like-btn";
-    likeBtnDiv.appendChild(likeBtn);
+    // const likeBtn = document.createElement("input");
+    // likeBtn.classList.add("like-btn");
+    // likeBtn.type = "checkbox";
+    // likeBtn.name = "like-btn";
+    // likeBtnDiv.appendChild(likeBtn);
     // TODO: add pointers for a specific post
-
-    const likeBtnCounter = document.createElement("p");
-    likeBtnCounter.classList.add("like-btn_counter");
-    likeBtnCounter.innerText = postInfo.likes_number;
-    likeBtnDiv.appendChild(likeBtnCounter);
-    newPostDescripDiv.appendChild(likeBtnDiv);
+    // const likeBtnCounter = document.createElement("p");
+    // likeBtnCounter.classList.add("like-btn_counter");
+    // likeBtnCounter.innerText = postInfo.likes_number;
+    // likeBtnDiv.appendChild(likeBtnCounter);
+    // newPostDescripDiv.appendChild(likeBtnDiv);
     // TODO: add pointers for a specific post
 
     newPostDiv.appendChild(newPostDescripDiv);
-    galleryPointer.appendChild(newPostDiv);
+    galleryContainer.appendChild(newPostDiv);
 }
 
-function drawNoPostsMessage(parentElementPointer) {
-    const emptyListMessage = document.createElement("p");
-    emptyListMessage.innerText = "Seems like you there are no posts yet";
-    // TODO: add styling for message text
-    parentElementPointer.appendChild(emptyListMessage);
-}
-
+/*
 document.addEventListener("DOMContentLoaded", () => {
 
+    let currentPage = "profile"
     // Noticing currently active page
-    switch(getCurrentPage()) {
+    switch(currentPage) {
 
         // Profile page gallery
         case "profile":
@@ -59,15 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 // FIXME
                 // TODO: connect function from diff files
-                const allUserPosts = getAllUserPosts(currentUserID);
-                if (length(allUserPosts) === 0) {
-                    drawNoPostsMessage(document.getElementById("profile_gallery"))
-                } else {
-                    allUserPosts.forEach((post) => {
-                        createPostElement(post, document.getElementById("profile_gallery"))
-                    });
-                }
-
+                getAllUserPosts(currentUserID);
             }
             catch (e) {
                 console.log(e);
@@ -78,9 +209,11 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("no such page exist");
     }
 });
+*/
 
 // profile page pointers
 const addNewPostBtn = document.getElementById("profile_add-new-btn");
+const galleryContainer = document.getElementById("profile_gallery");
 
 // pop-up window pointers
 const popUpWindow = document.getElementById("pop-up_add-new-post")
@@ -102,14 +235,10 @@ popUpCloseBtn.addEventListener("click", () => {
 });
 
 // Buttons events
-// FIXME: currently does nothing
-goToSignUpBtn.onclick = () => {
-    loginForm.style.display = "none";
-    signUpForm.style.display = "block";
-}
+addNewPostBtn.addEventListener("click", () => {
+    createNewPost();
+});
 
-// FIXME: currently does nothing
-goToLoginBtn.onclick = () => {
-    signUpForm.style.display = "none";
-    loginForm.style.display = "block";
-}
+window.addEventListener("load", (event) => {
+    showNoPostsMessage();
+});
