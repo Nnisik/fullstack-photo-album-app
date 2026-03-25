@@ -1,3 +1,5 @@
+import {showNoPostsMessage} from "./src/js/modules/ui-module";
+
 function checkNewUserFieldsNotEmpty(userParams) {
     // check if username field is not empty
     if (userParams.user_username === "") {
@@ -135,12 +137,6 @@ function createNewPostRequest(JSONRequestOptions) {
             // TODO: add returned data manipulation
             console.log(json)
         });
-}
-
-function showNoPostsMessage() {
-    let emptyMessageElement = document.createElement("p");
-    emptyMessageElement.innerText = "Ops, seems like you haven't posted anything yet...";
-    galleryContainer.appendChild(emptyMessageElement);
 }
 
 function createPostElement(postInfo) {

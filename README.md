@@ -7,7 +7,7 @@
   - [Instalation](#instalation)
   - [Usage](#usage)
   - [This weeks Roadmap](#this-weeks-roadmap)
-- [Future Plans](#known-issues)
+- [New TODOs](#new-todos)
   - [Backend](#backend)
   - [Frontend](#frontend)
 - [Known issues](#known-issues)
@@ -36,16 +36,22 @@
 ```bash
   
 ```
-### This weeks Roadmap
-- [ ] Fill database with example data
-  - [ ] Add default user
-  - [ ] Give default user a few posts for demo
-- [ ] create post liking logic
-## Future Plans
+
+## New TODOs
 ### Backend
-all's done for now
+- [ ] polish login/signup functions
+- [ ] cover all current API calls with tests 
 ### Frontend
-all's done for now
+- ![ ] JS Modules for diff parts of JS code
+- [ ] add login/signup feature
+  - [ ] create pop-up forms for login/signup
+  - [ ] create login API requests
+  - [ ] polish signup API requests
+- [ ] create and set up userdata storage on frontend side
+- [ ] rework new post's creation function to include user info in a request
+### Other
+- [ ] finish this README file
+
 
 ## Known Issues
-* empty list message doesn't apppear on page
+- 
