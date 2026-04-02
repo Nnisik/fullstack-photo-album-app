@@ -1,17 +1,14 @@
-import HeaderSection from "./components/headerSection.tsx";
-import ProfileSection from "./components/profileSection.tsx";
-import GallerySection from "./components/gallerySection.tsx";
-import styles from "./styles.module.css";
+import HeaderSection from "./layouts/headerSection.tsx";
+import styles from "./styles/styles.module.css";
+import ProfilePage from "./pages/profilePage.tsx";
 
 function App() {
-
-  return (
-    <div className={styles.app}>
-      <HeaderSection />
-      <ProfileSection />
-      <GallerySection />
-    </div>
-  )
+    return (
+        <div className={styles.app}>
+            <HeaderSection />
+            <ProfilePage />
+        </div>
+    );
 }
 
 export default App

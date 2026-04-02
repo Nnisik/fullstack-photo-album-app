@@ -1,5 +1,5 @@
-import PostItem from "./PostItem.tsx";
-import styles from "../styles.module.css";
+import PostItem from "../components/PostItem.tsx";
+import styles from "../styles/styles.module.css";
 import {useState} from "react";
 
 const gallerySection = () => {

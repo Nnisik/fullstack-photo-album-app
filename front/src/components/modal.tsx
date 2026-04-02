@@ -1,12 +1,8 @@
-import { FC, ReactNode } from "react";
-import styles from "../styles.module.css";
+import { FC } from "react";
+import styles from "../styles/styles.module.css";
+import {DialogProps} from "../pages/DialogProps.ts";
 
-interface NewPostDialogProps {
-    open?: boolean;
-    children?: ReactNode;
-}
-
-const Modal: FC<NewPostDialogProps> = ({ open=false , children }) => {
+const Modal: FC<DialogProps> = ({ open=false , children }) => {
     if (!open) return null;
 
     return (
