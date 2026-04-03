@@ -1,4 +1,4 @@
-# Fullstack Cats Photo Album App
+# Online Photo Album App
 ## Table of Contents
 - [About this project](#about-this-project)
   - [Build with](#build-with)
