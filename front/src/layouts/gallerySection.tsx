@@ -1,9 +1,8 @@
 import PostItem from "../components/PostItem.tsx";
 import styles from "../styles/styles.module.css";
-import {useState} from "react";
+import {posts} from "../hooks/userPostsHook.ts";
 
 const gallerySection = () => {
-    const [posts, getPosts]:any[] = useState([])
 
     return (
         <div className={styles.gallery}>
